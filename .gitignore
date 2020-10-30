@@ -1,0 +1,12 @@
+# idea
+**/.idea
+**/*.iml
+
+# logs
+**/*.log
+
+# file
+**/~
+
+# maven
+**/target
