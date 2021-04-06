@@ -20,8 +20,6 @@
     // 左侧菜单点击事件（激活菜单样式）
     $('#sidebarMenu a').bind('click', function() {
         var url = window.location.href + $(this).attr('href')
-        // 面包屑内容更新
-        $('main nav ol li').text($(this).text());
         // 清除右侧内容
         $('main div').empty()
         // 请求内容
@@ -73,11 +71,8 @@ function toast(msg, code) {
             level = 'primary'
         break
     }
-    $('main div:first').before("<div class=\"alert alert-" + level + " alert-dismissible fade show\" role=\"alert\">" +
+    $('main div:first').before('<div class="alert alert-' + level + ' alert-dismissible fade show" role="alert">' +
                     msg +
-                   "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                     "<span aria-hidden=\"true\">&times;</span>" +
-                   "</button>" +
-                 "</div>")
+                   '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>')
     setTimeout("$('.alert').alert('close')", 1500)
 }
