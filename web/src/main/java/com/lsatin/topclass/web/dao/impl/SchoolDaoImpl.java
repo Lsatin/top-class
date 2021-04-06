@@ -1,5 +1,6 @@
 package com.lsatin.topclass.web.dao.impl;
 
+import com.lsatin.topclass.web.base.dao.BaseDao;
 import com.lsatin.topclass.web.dao.SchoolDao;
 import com.lsatin.topclass.web.dao.utils.JdbcUtil;
 import com.lsatin.topclass.web.pojo.School;
@@ -8,7 +9,12 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 import java.util.List;
 
-public class SchoolDaoImpl implements SchoolDao {
+public class SchoolDaoImpl extends BaseDao implements SchoolDao {
+
+    /**
+     * SQL展示列前缀
+     */
+    private static final String SQL_COLUMN_PREFIX = "`id` as `id`, `name` as `name`, `address` as `address`, `zip_code` as zipCode";
 
     @Override
     public School selectByPrimaryKey(String id) {

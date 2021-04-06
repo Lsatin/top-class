@@ -17,8 +17,8 @@
         <title>尖子班</title>
     </head>
     <body>
-        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-lg-2 px-md-0 " href="/">
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">
                 <span data-feather="smile"></span>
                 尖子班
             </a>
@@ -38,7 +38,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <nav id="sidebarMenu" class="col-lg-2 d-md-block bg-light sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="sidebar-sticky pr-5">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -81,13 +81,8 @@
                     </div>
                 </nav>
 
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                    <nav aria-label="breadcrumb" class="mt-2">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">主页</li>
-                        </ol>
-                    </nav>
-                    <div class="container-fluid">
+                <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <div class="container-fluid mt-5">
                         <jsp:include page="index.jsp" flush="true"/>
                     </div>
                 </main>

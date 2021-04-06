@@ -8,12 +8,7 @@ import java.util.List;
 /**
  * 学校持久层
  */
-public interface SchoolDao extends BaseDao {
-
-    /**
-     * SQL展示列前缀
-     */
-    String SQL_COLUMN_PREFIX = "`id` as `id`, `name` as `name`, `address` as `address`, `zip_code` as zipCode";
+public interface SchoolDao {
 
     /**
      * 查询学校根据主键
