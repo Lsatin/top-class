@@ -2,8 +2,8 @@
 <Configuration status="off">
     <!-- 配置日志文件输出目录，此配置将日志输出到根目录下的指定文件夹 -->
     <Properties>
-        <Property name="fileDir">/logs/log4j2</Property>
-        <Property name="fileHistory">/logs/log4j2/history</Property>
+        <Property name="fileDir">/logs/top-class</Property>
+        <Property name="fileHistory">/logs/top-class/history</Property>
     </Properties>
     <Appenders>
         <console name="Console" target="SYSTEM_OUT">

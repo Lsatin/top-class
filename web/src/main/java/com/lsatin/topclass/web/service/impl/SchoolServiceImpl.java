@@ -1,39 +1,62 @@
 package com.lsatin.topclass.web.service.impl;
 
+import com.lsatin.topclass.web.basic.service.AbstractBasicService;
 import com.lsatin.topclass.web.dao.SchoolDao;
 import com.lsatin.topclass.web.dao.impl.SchoolDaoImpl;
 import com.lsatin.topclass.web.pojo.School;
 import com.lsatin.topclass.web.service.SchoolService;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-public class SchoolServiceImpl implements SchoolService {
+public class SchoolServiceImpl extends AbstractBasicService<School, SchoolDao> implements SchoolService {
 
-    private final SchoolDao schoolDao = new SchoolDaoImpl();
+    private SchoolDao schoolDao;
 
-    @Override
-    public List<School> getList() {
-        return schoolDao.select();
+    public SchoolServiceImpl() {
+        this.schoolDao = new SchoolDaoImpl();
     }
 
     @Override
-    public List<School> getList(School school) {
-        return schoolDao.select(school);
+    protected void setDao(SchoolDao dao) {
+        this.schoolDao = dao;
     }
 
     @Override
-    public School getSchool(String id) {
-        return schoolDao.selectByPrimaryKey(id);
+    protected SchoolDao getDao() {
+        return schoolDao;
     }
 
     @Override
-    public int saveSchool(School school) {
-        return StringUtils.isNotEmpty(school.getId()) ? schoolDao.updateByPrimaryKey(school) : schoolDao.insert(school);
+    protected void preSave(School param) {
+        final List<School> select = schoolDao.select(param, null, null);
+        if (select != null && select.size() > 0) {
+            final Integer version = param.getVersion();
+            if (version != null) {
+                param.setVersion(version + 1);
+            }
+        }
     }
 
     @Override
-    public int deleteSchool(School school) {
-        return schoolDao.delete(school);
+    public School save(School param) {
+        super.save(param);
+        try {
+            if (param != null) {
+                if (param.getId() != null && param.getId() > 0) {
+                    getDao().update(param);
+                } else {
+                    getDao().insert(param);
+                }
+            }
+        } catch (Exception e) {
+            Logger.error("执行保存方法异常：{}", e.getMessage());
+        }
+        return param;
+    }
+
+    @Override
+    public School deleteSchool(School param) {
+        getDao().delete(param);
+        return param;
     }
 }

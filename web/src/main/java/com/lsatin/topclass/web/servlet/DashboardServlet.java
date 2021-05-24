@@ -1,31 +1,37 @@
 package com.lsatin.topclass.web.servlet;
 
-import com.lsatin.topclass.web.base.servlet.BaseServlet;
-import org.apache.logging.log4j.web.WebLoggerContextUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * 仪表盘servlet
  */
-public class DashboardServlet extends BaseServlet {
+public final class DashboardServlet extends HttpServlet {
+
+    /** LOG4J */
+    private final Logger LOGGER = LogManager.getLogger(getClass());
+
+    /** 视图前缀 */
+    private static final String VIEW_PREFIX = "/views/";
+
+    /** 视图后缀 */
+    private static final String VIEW_SUFFIX = ".jsp";
 
     @Override
     public void init() throws ServletException {
-        logger.info("仪表盘servlet初始化...");
+        LOGGER.info("仪表盘servlet初始化...");
         super.init();
     }
 
     @Override
     public void destroy() {
-        logger.info("仪表盘servlet销毁...");
+        LOGGER.info("仪表盘servlet销毁...");
         super.destroy();
     }
 
@@ -33,7 +39,7 @@ public class DashboardServlet extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String service = req.getServletPath();
         String path = req.getPathInfo();
-        logger.info("仪表盘GET请求[ SERVLET: {} ][ PATH: {} ]", service, path);
+        LOGGER.info("仪表盘GET请求[ SERVLET: {} ][ PATH: {} ]", service, path);
         if (service.isEmpty()) {
             req.getRequestDispatcher(req.getContextPath() + VIEW_PREFIX + "dashboard" + VIEW_SUFFIX).forward(req, resp);
         } else if ("/index".equals(service) || "/".equals(service)) {
@@ -57,50 +63,4 @@ public class DashboardServlet extends BaseServlet {
         }
     }
 
-    @Override
-    protected long getLastModified(HttpServletRequest req) {
-        return super.getLastModified(req);
-    }
-
-    @Override
-    protected void doHead(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doHead(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-       HttpSession session = req.getSession();
-       session.setAttribute("username", req.getParameter("username"));
-       this.doGet(req, resp);
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
-    }
-
-    @Override
-    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doOptions(req, resp);
-    }
-
-    @Override
-    protected void doTrace(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doTrace(req, resp);
-    }
-
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
-    }
-
-    @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        super.service(req, res);
-    }
 }

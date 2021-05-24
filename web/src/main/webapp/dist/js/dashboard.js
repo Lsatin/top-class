@@ -27,20 +27,16 @@
             type: "GET",
             url: url,
             timeout: 6000,
-            beforeSend: function(){
-                $('.progress-bar').css('width', '10%')
+            beforeSend: function() {
             },
-            complete: function(xhr, ts){
-                $('.progress-bar').css('width', '0%')
+            complete: function(xhr, ts) {
                 toast(ts, xhr.status)
             },
             success: function(data) {
                 $('main div').html(data)
-                $('.progress-bar').css('width', '100%')
             },
             error: function(e, xhr, opt) {
                 $('main div').html(e.responseText)
-                $('.progress-bar').css('width', '100%')
             }
         })
         // 删除激活菜单样式
@@ -55,7 +51,7 @@
 /**
  *
  */
-function toast(msg, code) {
+function toast(msg, code, timeout) {
     let level = 'info'
     switch (code) {
         case 500:
@@ -71,8 +67,8 @@ function toast(msg, code) {
             level = 'primary'
         break
     }
-    $('main div:first').before('<div class="alert alert-' + level + ' alert-dismissible fade show" role="alert">' +
+    $('main div:first').prepend('<div class="alert alert-' + level + ' alert-dismissible fade show" role="alert">' +
                     msg +
                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>')
-    setTimeout("$('.alert').alert('close')", 1500)
+    setTimeout("$('.alert').alert('close')", timeout == null || timeout == undifind ? 1200 : timeout)
 }
