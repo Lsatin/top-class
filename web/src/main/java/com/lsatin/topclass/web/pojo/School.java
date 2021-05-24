@@ -1,39 +1,28 @@
 package com.lsatin.topclass.web.pojo;
 
-import com.lsatin.topclass.web.base.pojo.AbstractPojo;
+import com.lsatin.topclass.web.basic.dao.annotation.Column;
+import com.lsatin.topclass.web.basic.dao.annotation.Table;
+import com.lsatin.topclass.web.basic.pojo.RecordPojo;
+
+import java.io.Serializable;
 
 /**
  * 学校pojo
  */
-public class School extends AbstractPojo {
+@Table(value = "t_school")
+public class School extends RecordPojo implements Serializable {
 
-    /**
-     * 主键
-     */
-    private String id;
-
-    /**
-     * 学校名称
-     */
+    /** 学校名称 */
+    @Column
     private String name;
 
-    /**
-     * 学校地址
-     */
+    /** 学校地址 */
+    @Column
     private String address;
 
-    /**
-     * 邮政编码
-     */
+    /** 邮政编码 */
+    @Column(value = "zip_code")
     private String zipCode;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -61,11 +50,10 @@ public class School extends AbstractPojo {
 
     @Override
     public String toString() {
-        return "school{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+        return "School{" +
+                "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                '}' + super.toString();
+                super.toString();
     }
 }

@@ -28,13 +28,10 @@
                     <span class="border border-dark" data-feather="user" color="white" width="24"></span>
                 </li>
             </ul>
-            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav>
-        <div class="progress sticky-top" style="height: .15rem;">
-          <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
 
         <div class="container-fluid">
             <div class="row">
@@ -89,26 +86,24 @@
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary" id="modalSave">保存</button>
-                    </div>
-                </div>
+        <div class="modal fade" id="globalModal" tabindex="-1" aria-labelledby="globalModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="globalModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="globalModalBody"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-bs-submit="modal">保存</button>
+              </div>
             </div>
+          </div>
         </div>
 
-        <script src="<%= basePath %>/dist/js/feather.min.js"></script>
         <script src="<%= basePath %>/dist/js/jquery-3.5.1.min.js"></script>
+        <script src="<%= basePath %>/dist/js/feather.min.js"></script>
         <script src="<%= basePath %>/dist/js/popper.min.js"></script>
         <script src="<%= basePath %>/dist/js/bootstrap.min.js"></script>
         <script src="<%= basePath %>/dist/js/bootstrap-table.min.js"></script>
