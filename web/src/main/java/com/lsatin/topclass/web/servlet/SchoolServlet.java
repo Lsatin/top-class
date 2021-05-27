@@ -1,9 +1,8 @@
 package com.lsatin.topclass.web.servlet;
 
-import com.lsatin.topclass.web.basic.pojo.Pagination;
-import com.lsatin.topclass.web.basic.pojo.RestfulResult;
+import com.lsatin.topclass.basic.pojo.Pagination;
+import com.lsatin.topclass.basic.pojo.RestfulResult;
 import com.lsatin.topclass.web.basic.servlet.BasicServlet;
-import com.lsatin.topclass.web.constant.Constants;
 import com.lsatin.topclass.web.pojo.School;
 import com.lsatin.topclass.web.service.SchoolService;
 import com.lsatin.topclass.web.service.impl.SchoolServiceImpl;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 学校servlet

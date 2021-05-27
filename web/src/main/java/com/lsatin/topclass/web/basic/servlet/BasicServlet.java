@@ -2,8 +2,8 @@ package com.lsatin.topclass.web.basic.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.lsatin.topclass.web.basic.service.BasicService;
-import com.lsatin.topclass.web.util.Assert;
+import com.lsatin.topclass.basic.service.BasicService;
+import com.lsatin.topclass.basic.utils.Assert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
