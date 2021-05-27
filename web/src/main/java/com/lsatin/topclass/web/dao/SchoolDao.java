@@ -1,6 +1,6 @@
 package com.lsatin.topclass.web.dao;
 
-import com.lsatin.topclass.web.basic.dao.BasicDao;
+import com.lsatin.topclass.basic.dao.BasicDao;
 import com.lsatin.topclass.web.pojo.School;
 
 /**

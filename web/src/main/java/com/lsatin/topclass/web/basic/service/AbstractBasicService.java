@@ -1,13 +1,12 @@
 package com.lsatin.topclass.web.basic.service;
 
-import com.lsatin.topclass.web.basic.dao.BasicDao;
-import com.lsatin.topclass.web.basic.pojo.Pagination;
+import com.lsatin.topclass.basic.dao.BasicDao;
+import com.lsatin.topclass.basic.pojo.Pagination;
+import com.lsatin.topclass.basic.service.BasicService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public abstract class AbstractBasicService<T, D extends BasicDao<T, Long>> implements BasicService<T, Long> {

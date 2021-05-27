@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsatin.topclass.webssm.basic.pojo">
+
+    <resultMap type="com.lsatin.topclass.webssm.basic.pojo.RecordPojo" id="record">
+        <id column="id" property="id"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="updated_time" property="updatedTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="version" property="version"/>
+        <result column="valid" property="valid"/>
+    </resultMap>
+
+    <sql id="basic_column">
+        id, created_time AS createdTime, created_by AS createdBy, updated_time AS updatedTime,
+        updated_by AS updatedBy, version, valid
+    </sql>
+
+</mapper>

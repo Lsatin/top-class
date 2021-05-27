@@ -1,5 +1,7 @@
 package com.lsatin.topclass.web.basic.pojo;
 
+import com.lsatin.topclass.basic.pojo.LockedPojo;
+import com.lsatin.topclass.basic.pojo.PrimaryKeyPojo;
 import com.lsatin.topclass.web.basic.dao.annotation.Column;
 
 import java.io.Serializable;

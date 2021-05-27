@@ -1,0 +1,65 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsatin.topclass.webssm.dao.SchoolDao">
+
+    <resultMap type="com.lsatin.topclass.webssm.pojo.School" id="school"
+               extends="com.lsatin.topclass.webssm.basic.pojo.record">
+        <result column="name" property="name"/>
+        <result column="address" property="address"/>
+        <result column="zip_code" property="zipCode"/>
+    </resultMap>
+
+    <sql id="sql_column">
+        <include refid="com.lsatin.topclass.webssm.basic.pojo.basic_column"/>
+        , name, address, zip_code AS zipCode
+    </sql>
+
+    <sql id="sql_table">t_school</sql>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="com.lsatin.topclass.webssm.pojo.School">
+        SELECT COUNT(1)
+        FROM
+        <include refid="sql_table"/>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="name != null and name != ''">name LIKE "%"#{name}"%"</if>
+            <if test="address != null and address != ''">AND address LIKE "%"#{address}"%"</if>
+            <if test="zipCode != null and zipCode != ''">AND zip_code LIKE "%"#{zipCode}"%"</if>
+        </trim>
+    </select>
+
+    <select id="select" resultMap="school" parameterType="com.lsatin.topclass.basic.pojo.Pagination">
+        SELECT
+        <include refid="sql_column"/>
+        FROM
+        <include refid="sql_table"/>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="data.name != null and data.name != ''">name LIKE "%"#{data.name}"%"</if>
+            <if test="data.address != null and data.address != ''">AND address LIKE "%"#{data.address}"%"</if>
+            <if test="data.zipCode != null and data.zipCode != ''">AND zip_code LIKE "%"#{data.zipCode}"%"</if>
+        </trim>
+        LIMIT #{current.page}, #{current.size}
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="school" parameterType="java.lang.Long">
+        SELECT
+        <include refid="sql_column"/>
+        FROM
+        <include refid="sql_table"/>
+        WHERE id = #{id}
+    </select>
+
+    <update id="update" parameterType="com.lsatin.topclass.webssm.pojo.School">
+        UPDATE
+        <include refid="sql_table"/>
+        <trim prefix="SET" suffixOverrides="," suffix=",">
+            update_time = UNIX_TIMESTAMP(),
+            <if test="name != null">name = #{name},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="zipCode != null">zip_code = #{zipCode},</if>
+            <if test="valid != null">valid = #{valid}</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

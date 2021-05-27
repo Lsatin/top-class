@@ -1,5 +1,6 @@
 package com.lsatin.topclass.web.basic.dao;
 
+import com.lsatin.topclass.basic.dao.BasicDao;
 import com.lsatin.topclass.web.basic.dao.builder.SqlBound;
 import com.lsatin.topclass.web.basic.dao.builder.SqlCommandType;
 import com.lsatin.topclass.web.basic.dao.reflection.ReflectionException;
@@ -230,14 +231,15 @@ public abstract class AbstractBasicDao<T> extends TypeReference<T> implements Ba
     }
 
     @Override
-    public void delete(T param) {
+    public int delete(T param) {
         try {
             final Connection connection = dataSource.getConnection();
             PreparedStatement bind = bind(connection, param, null, null, SqlCommandType.DELETE);
-            bind.executeUpdate();
+            return bind.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
 }

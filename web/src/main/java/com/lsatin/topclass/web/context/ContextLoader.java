@@ -1,8 +1,8 @@
 package com.lsatin.topclass.web.context;
 
+import com.lsatin.topclass.basic.utils.PropertiesLoaderUtils;
 import com.lsatin.topclass.web.basic.dao.reflection.DefaultReflectorFactory;
 import com.lsatin.topclass.web.basic.dao.reflection.ReflectorFactory;
-import com.lsatin.topclass.web.util.PropertiesLoaderUtils;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
